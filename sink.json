@@ -1,0 +1,22 @@
+{
+  "name": "Neo4jSinkConnector",
+  "config": {
+    "neo4j.topic.cypher.id-ifg-poc-test-source": "MERGE (ts:TestSource {id: event.id}) SET        ts.name=event.name, ts.timestamp= event.timestamp",
+    "value.converter.schemas.enable": "false",
+    "name": "Neo4jSinkConnector",
+    "connector.class": "streams.kafka.connect.sink.Neo4jSinkConnector",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "errors.retry.timeout": "-1",
+    "errors.retry.delay.max.ms": "1000",
+    "errors.tolerance": "all",
+    "errors.log.enable": "true",
+    "errors.log.include.messages": "true",
+    "topics": "id-ifg-poc-test-source",
+    "neo4j.authentication.basic.username": "neo4j",
+    "neo4j.authentication.basic.password": "***********",
+    "neo4j.server.uri": "neo4j://34.126.112.247:7687",
+    "neo4j.encryption.enabled": "false",
+    "neo4j.database": "test1"
+  }
+}
